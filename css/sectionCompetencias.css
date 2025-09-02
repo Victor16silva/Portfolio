@@ -54,7 +54,10 @@
 
 @media (min-width: 1080px) {
   section#competencias {
-    display: none;
+    position: absolute;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
   }
 
   section#competenciasDesktop {
