@@ -15025,6 +15025,16 @@ strong {
   z-index: 5;
   mix-blend-mode: normal;
 }
+.pc-card-wrapper.pc-card-static {
+  touch-action: pan-y;
+}
+.pc-card-wrapper.pc-card-static .pc-card {
+  transform: translateZ(0) rotateX(0deg) rotateY(0deg) !important;
+}
+.pc-card-wrapper.pc-card-static .pc-shine,
+.pc-card-wrapper.pc-card-static .pc-glare {
+  opacity: 0.2;
+}
 .pc-details {
   width: 100%;
   position: absolute;
@@ -15083,10 +15093,23 @@ strong {
     padding: 8px 12px;
     font-size: 10px;
   }
+  .section-hero-2 h1.fs-50 {
+    font-size: clamp(2.2rem, 11vw, 2.9rem);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
 }
 @media (max-width: 480px) {
   .section-hero-2 .pc-card-wrapper {
     width: min(88vw, 320px);
+  }
+  .section-hero-2 .hero-2 .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .section-hero-2 .hero-2 [class*="col-"] {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 

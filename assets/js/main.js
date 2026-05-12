@@ -151,7 +151,7 @@
                 'offcanvas.educationValue': 'Análise e Desenvolvimento de Sistemas - UNOPAR',
                 'offcanvas.social': 'Redes Sociais',
                 'hero.greeting': 'Opa, Eu sou Victor',
-                'hero.title': 'Desenvolvedor <span class="text-linear-4">{Full Stack}</span>Web & App<span class="flicker">_</span>',
+                'hero.title': 'Desenvolvedor <span class="text-linear-4">{Full Stack}</span> Web & App<span class="flicker">_</span>',
                 'hero.description':
                     '&lt;p&gt;<span class="text-dark">Com conhecimentos em tecnologias como</span> <span class="text-secondary-2">JavaScript</span>, <span class="text-secondary-2">React</span>, <span class="text-secondary-2">HTML</span>, e <span class="text-secondary-2">CSS</span><span class="text-dark">... Entrego soluções web e Sistemas inovadoras e robustas.</span>&lt;/p&gt;',
                 'hero.more': '...e mais',
@@ -195,7 +195,7 @@
                 'offcanvas.educationValue': 'Systems Analysis and Development - UNOPAR',
                 'offcanvas.social': 'Social Media',
                 'hero.greeting': 'Hey, I am Victor',
-                'hero.title': 'Developer <span class="text-linear-4">{Full Stack}</span>Web & App<span class="flicker">_</span>',
+                'hero.title': 'Developer <span class="text-linear-4">{Full Stack}</span> Web & App<span class="flicker">_</span>',
                 'hero.description':
                     '&lt;p&gt;<span class="text-dark">With knowledge in technologies like</span> <span class="text-secondary-2">JavaScript</span>, <span class="text-secondary-2">React</span>, <span class="text-secondary-2">HTML</span>, and <span class="text-secondary-2">CSS</span><span class="text-dark">... I deliver innovative and robust web and system solutions.</span>&lt;/p&gt;',
                 'hero.more': '...and more',
@@ -710,6 +710,7 @@
     function profileCardFx() {
         const wrappers = document.querySelectorAll('.pc-card-wrapper');
         if (!wrappers.length) return;
+        const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
         const clamp = (v, min = 0, max = 100) => Math.min(Math.max(v, min), max);
         const round = (v, precision = 3) => parseFloat(v.toFixed(precision));
         const adjust = (v, fMin, fMax, tMin, tMax) => round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
@@ -778,6 +779,16 @@
             const toCenter = () => {
                 setTarget((shell.clientWidth || 0) / 2, (shell.clientHeight || 0) / 2);
             };
+
+            if (isTouchDevice) {
+                wrap.classList.add('pc-card-static');
+                currentX = (shell.clientWidth || 0) / 2;
+                currentY = (shell.clientHeight || 0) / 2;
+                targetX = currentX;
+                targetY = currentY;
+                setVarsFromXY(currentX, currentY);
+                return;
+            }
 
             shell.addEventListener('pointerenter', (event) => {
                 shell.classList.add('active', 'entering');
